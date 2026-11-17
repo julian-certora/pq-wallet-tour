@@ -1,0 +1,28 @@
+{
+  "name": "pq-wallet-tour",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "fixture": "node scripts/make-fixture.mjs",
+    "contract:test": "cd contract && cargo test --workspace",
+    "contract:build": "cd contract && ${STELLAR:-stellar} contract build --package pq-account --optimize --out-dir ../public && ${STELLAR:-stellar} contract build --package ed25519-account --optimize --out-dir ../public",
+    "e2e:testnet": "node --experimental-strip-types scripts/e2e-testnet.ts"
+  },
+  "dependencies": {
+    "@noble/post-quantum": "0.7.1",
+    "@stellar/stellar-sdk": "17.4.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^2.0.0-beta.v.11",
+    "@types/node": "^24.19.2",
+    "cf": "^1.0.0-beta.27",
+    "typescript": "7.0.2",
+    "vite": "8.3.5",
+    "vitest": "5.1.0"
+  }
+}

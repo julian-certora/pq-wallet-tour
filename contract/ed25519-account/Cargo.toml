@@ -1,0 +1,18 @@
+[package]
+name = "ed25519-account"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "The control wallet for the tour: the same minimal smart account as pq-account, but it checks an Ed25519 signature with the ed25519_verify host function."
+license = "Apache-2.0"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = "=30.0.0-rc.1"
+
+[dev-dependencies]
+soroban-sdk = { version = "=30.0.0-rc.1", features = ["testutils"] }
+ed25519-dalek = "2"

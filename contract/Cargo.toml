@@ -1,0 +1,35 @@
+[package]
+name = "pq-account"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "A minimal post-quantum smart account for Stellar: ML-DSA-65 signatures checked with CAP-87 host functions."
+license = "Apache-2.0"
+
+[workspace]
+members = [".", "ed25519-account"]
+resolver = "2"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = "=30.0.0-rc.1"
+
+[dev-dependencies]
+soroban-sdk = { version = "=30.0.0-rc.1", features = ["testutils"] }
+# Signing in tests only. The contract itself only verifies, through the host.
+ml-dsa = { version = "0.1.2", default-features = false, features = ["alloc"] }
+serde_json = "1"
+hex = "0.4"
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true

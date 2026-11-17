@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>OG card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..650&family=Geist+Mono:wght@400..600&display=block" />
+<style>
+  /* Rendered at 1200x630 (scale 2) by scripts/og/render.sh into public/og.png. */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background: #11110f;
+    color: #ecebe4;
+    font-family: 'Geist', sans-serif;
+    font-feature-settings: 'ss01', 'ss02';
+    -webkit-font-smoothing: antialiased;
+    padding: 56px 72px 52px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  /* A faint ledger grid, the only texture. */
+  body::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgb(236 235 228 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(236 235 228 / 0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: -1px -1px;
+    pointer-events: none;
+  }
+  .top { display: flex; align-items: center; gap: 14px; position: relative; }
+  .mark { width: 34px; height: 34px; color: #ecebe4; }
+  .brand { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+  .pill {
+    font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 6px;
+    background: rgb(236 235 228 / 0.08); color: rgb(236 235 228 / 0.75);
+  }
+  .main { flex: 1; display: flex; align-items: center; gap: 56px; position: relative; padding: 28px 0 32px; }
+  .copy { flex: 0 0 580px; }
+  .eyebrow {
+    font-family: 'Geist Mono', monospace; font-size: 18px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #fdda24;
+  }
+  h1 {
+    margin-top: 18px;
+    font-size: 62px; line-height: 1.05; letter-spacing: -0.035em; font-weight: 600;
+    text-wrap: balance;
+  }
+  .sub { margin-top: 22px; font-size: 25px; line-height: 1.4; color: rgb(236 235 228 / 0.72); max-width: 32ch; text-wrap: pretty; }
+
+  .viz { flex: 1; display: flex; flex-direction: column; gap: 26px; }
+  .row { display: flex; flex-direction: column; gap: 10px; }
+  .label { display: flex; justify-content: space-between; align-items: baseline; font-size: 19px; font-weight: 500; }
+  .label span { font-family: 'Geist Mono', monospace; font-size: 16px; color: rgb(236 235 228 / 0.6); font-weight: 400; }
+  .cells { display: flex; flex-wrap: wrap; gap: 4px; }
+  .cells i { width: 18px; height: 18px; border-radius: 3px; background: rgb(236 235 228 / 0.45); }
+  .cells.pq i { background: #fdda24; }
+  .caption { font-size: 16px; color: rgb(236 235 228 / 0.55); }
+
+  .foot {
+    position: relative;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgb(236 235 228 / 0.14);
+    padding-top: 22px;
+    font-size: 21px;
+  }
+  .url { font-family: 'Geist Mono', monospace; font-weight: 500; letter-spacing: 0.01em; }
+  .meta { color: rgb(236 235 228 / 0.6); }
+</style>
+</head>
+<body>
+  <div class="top">
+    <svg class="mark" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2.5 21 7.5v9L12 21.5 3 16.5v-9Z" fill="none" stroke="currentColor" stroke-width="1.6" />
+      <path d="M7.5 12h9M12 7.5v9" stroke="currentColor" stroke-width="1.6" />
+    </svg>
+    <span class="brand">Post-quantum Stellar</span>
+    <span class="pill">Live on testnet</span>
+  </div>
+
+  <div class="main">
+    <div class="copy">
+      <p class="eyebrow">Protocol 30 · Bell · ML-DSA</p>
+      <h1>Send money with a quantum&#8209;safe signature.</h1>
+      <p class="sub">A one-minute live tour of post&#8209;quantum wallets on the real Stellar testnet.</p>
+    </div>
+    <div class="viz" aria-hidden="true">
+      <div class="row">
+        <div class="label">Ed25519 signature <span>64 B</span></div>
+        <div class="cells" id="ed"></div>
+      </div>
+      <div class="row">
+        <div class="label">ML-DSA-65 signature <span>3,309 B</span></div>
+        <div class="cells pq" id="pq"></div>
+      </div>
+      <p class="caption">Each square is 32 bytes.</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="url">quantum.stellar.buzz</span>
+    <span class="meta">Two wallets · one payment · one failed forgery</span>
+  </div>
+
+  <script>
+    const fill = (id, bytes) => (document.getElementById(id).innerHTML = '<i></i>'.repeat(Math.ceil(bytes / 32)));
+    fill('ed', 64);
+    fill('pq', 3309);
+  </script>
+</body>
+</html>
