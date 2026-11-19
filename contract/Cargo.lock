@@ -458,6 +458,150 @@ dependencies = [
 ]
 
 [[package]]
+name = "cvlr"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "cvlr-asserts",
+ "cvlr-decimal",
+ "cvlr-derive",
+ "cvlr-early-panic",
+ "cvlr-fixed",
+ "cvlr-hook",
+ "cvlr-log",
+ "cvlr-macros",
+ "cvlr-mathint",
+ "cvlr-nondet",
+ "cvlr-spec",
+]
+
+[[package]]
+name = "cvlr-asserts"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+
+[[package]]
+name = "cvlr-decimal"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "cvlr-asserts",
+ "cvlr-log",
+ "cvlr-mathint",
+ "cvlr-nondet",
+]
+
+[[package]]
+name = "cvlr-derive"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.119",
+]
+
+[[package]]
+name = "cvlr-early-panic"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.119",
+]
+
+[[package]]
+name = "cvlr-fixed"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "cvlr-asserts",
+ "cvlr-log",
+ "cvlr-mathint",
+ "cvlr-nondet",
+]
+
+[[package]]
+name = "cvlr-hook"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "quote",
+ "syn 2.0.119",
+]
+
+[[package]]
+name = "cvlr-log"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "cvlr-mathint",
+]
+
+[[package]]
+name = "cvlr-macros"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "darling 0.20.11",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.119",
+]
+
+[[package]]
+name = "cvlr-mathint"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "cvlr-asserts",
+ "cvlr-nondet",
+]
+
+[[package]]
+name = "cvlr-nondet"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "cvlr-asserts",
+]
+
+[[package]]
+name = "cvlr-soroban"
+version = "0.4.0"
+dependencies = [
+ "cvlr-asserts",
+ "cvlr-log",
+ "cvlr-nondet",
+ "seq-macro",
+ "soroban-sdk",
+]
+
+[[package]]
+name = "cvlr-soroban-derive"
+version = "0.4.0"
+dependencies = [
+ "darling 0.20.11",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.119",
+ "uuid",
+]
+
+[[package]]
+name = "cvlr-spec"
+version = "0.6.1"
+source = "git+https://github.com/Certora/cvlr?branch=0.6.1-soroban-changes#33c144bb4e6a8bd27d78bdefe0413f10f8744f2f"
+dependencies = [
+ "cvlr-asserts",
+ "cvlr-log",
+ "cvlr-macros",
+ "cvlr-mathint",
+ "cvlr-nondet",
+]
+
+[[package]]
 name = "darling"
 version = "0.20.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -679,6 +823,9 @@ dependencies = [
 name = "ed25519-account"
 version = "0.1.0"
 dependencies = [
+ "cvlr",
+ "cvlr-soroban",
+ "cvlr-soroban-derive",
  "ed25519-dalek",
  "soroban-sdk",
 ]
@@ -852,6 +999,17 @@ dependencies = [
  "libc",
  "wasi",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "getrandom"
+version = "0.4.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099"
+dependencies = [
+ "cfg-if",
+ "libc",
+ "r-efi",
 ]
 
 [[package]]
@@ -1306,6 +1464,9 @@ dependencies = [
 name = "pq-account"
 version = "0.1.0"
 dependencies = [
+ "cvlr",
+ "cvlr-soroban",
+ "cvlr-soroban-derive",
  "hex",
  "ml-dsa",
  "serde_json",
@@ -1350,6 +1511,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "r-efi"
+version = "6.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
+
+[[package]]
 name = "rand"
 version = "0.8.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1376,7 +1543,7 @@ version = "0.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
 dependencies = [
- "getrandom",
+ "getrandom 0.2.17",
 ]
 
 [[package]]
@@ -1477,6 +1644,12 @@ name = "semver"
 version = "1.0.28"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd"
+
+[[package]]
+name = "seq-macro"
+version = "0.3.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1bc711410fbe7399f390ca1c3b60ad0f53f80e95c5eb935e52268a0e2cd49acc"
 
 [[package]]
 name = "serde"
@@ -1681,7 +1854,7 @@ dependencies = [
  "ed25519-dalek",
  "elliptic-curve",
  "generic-array",
- "getrandom",
+ "getrandom 0.2.17",
  "hex-literal",
  "hmac",
  "k256",
@@ -2028,6 +2201,17 @@ name = "unicode-ident"
 version = "1.0.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563"
+
+[[package]]
+name = "uuid"
+version = "1.29.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3c14b15dffa2f4bd712103e857140aa04a4f2ff6e955c77d7eb8e53ee02a3b64"
+dependencies = [
+ "getrandom 0.4.3",
+ "js-sys",
+ "wasm-bindgen",
+]
 
 [[package]]
 name = "version_check"

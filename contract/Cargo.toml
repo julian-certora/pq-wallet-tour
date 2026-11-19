@@ -9,13 +9,17 @@ license = "Apache-2.0"
 [workspace]
 members = [".", "ed25519-account"]
 resolver = "2"
+dependencies = {soroban-sdk = {version = "30.0.0-rc.1", default-features = false, features = ["alloc", "hazmat-address"]}, cvlr = {git = "https://github.com/Certora/cvlr", branch = "0.6.1-soroban-changes", default-features = false}, cvlr-soroban = {path = "/Users/julian/git/pq-wallet-tour/cvlr-soroban/cvlr-soroban", default-features = false, features = ["muxedaddress"]}, cvlr-soroban-derive = {path = "/Users/julian/git/pq-wallet-tour/cvlr-soroban/cvlr-soroban-derive", default-features = false}}
 
 [lib]
 crate-type = ["cdylib", "rlib"]
 doctest = false
 
 [dependencies]
-soroban-sdk = "=30.0.0-rc.1"
+soroban-sdk = {workspace = true, default-features = false}
+cvlr = {workspace = true, default-features = false}
+cvlr-soroban = {workspace = true, default-features = false}
+cvlr-soroban-derive = {workspace = true, default-features = false}
 
 [dev-dependencies]
 soroban-sdk = { version = "=30.0.0-rc.1", features = ["testutils"] }
@@ -33,3 +37,11 @@ debug-assertions = false
 panic = "abort"
 codegen-units = 1
 lto = true
+
+[profile.release-with-logs]
+opt-level = 2
+debug = 2
+strip = false
+lto = true
+overflow-checks = true
+inherits = "release"

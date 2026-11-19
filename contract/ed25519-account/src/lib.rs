@@ -86,3 +86,26 @@ impl CustomAccountInterface for Ed25519Account {
         Ok(())
     }
 }
+pub mod sanity;
+use cvlr::nondet::Nondet;
+use cvlr_soroban_derive::rule;
+use cvlr_soroban::*;
+
+
+
+impl Nondet for DataKey {
+    fn nondet() -> Self { 
+        {
+            DataKey::PublicKey
+	}
+    }
+}
+
+impl Nondet for Error {
+    fn nondet() -> Self { 
+        {
+            Error::MissingPublicKey
+	}
+    }
+}
+
